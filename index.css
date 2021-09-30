@@ -1,0 +1,94 @@
+@font-face {
+    font-family: 'ImcreSoojin';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@2.3/ImcreSoojin.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+body {
+    margin: 0;
+    height: 100vh;
+    font-family: 'ImcreSoojin';
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-image: url("./asserts/background.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
+.title {
+    margin: 12px 0px 10px 0;
+}
+
+.title h1 {
+    text-shadow: 2px 2px #6474BE;
+    margin-top: 10px;
+    margin-bottom: 30px;
+}
+
+.main > .bubble{
+    border: solid #DFBA88 2px;
+    border-radius: 10px;
+    box-shadow: 2px 2px 4px #DEB986;
+    text-shadow: 2px 2px #6474BE;
+}
+
+.main > .bubble h3{
+    font-family: Arial, Helvetica, sans-serif;
+    color: whitesmoke;
+}
+
+.main > .myImg .img-gif {
+    width: 350px;
+    height: auto;
+    margin-top: 20px;
+    margin-bottom: 5px;
+}
+
+.main > .myInput input {
+    width: 450px;
+    height: 25px;
+    margin: 20px;
+    text-align: center;
+    vertical-align: middle;
+    border: #DFBA88 1px solid;
+    border-radius: 10px;
+}
+
+.main > .myInput input:focus {
+    outline: none;
+}
+
+.main > .btn input {
+    width: 80px;
+    height: 80px;
+    margin-bottom: 20px;
+    padding: 5px;
+    border: #6474BE 2px solid;
+    border-radius: 100%;
+    text-align: center;
+    vertical-align: middle;
+    font-family: 'ImcreSoojin';
+    font-size: larger;
+    background-color: transparent;
+    text-shadow: 1px 2px #8b64be;
+    transition: all 0.5s;
+}
+
+.main > .btn input:hover {
+    background-color: #6474BE;
+    opacity: 70%;
+    color: white;
+    text-shadow: 1px 1px #b9b0c5;
+}
+
+.hidden {
+    visibility: hidden;
+}
+
+.none {
+    display: none;
+}
