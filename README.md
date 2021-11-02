@@ -34,5 +34,8 @@
   + "공룡"을 입력해보세요.
   + "원상복귀"를 입력해보세요.
   
+_____
+![챗봇](https://user-images.githubusercontent.com/85826542/139894192-48b97163-99b3-4938-9118-effcd3d3dec5.gif)
+
 
   
