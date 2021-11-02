@@ -3,27 +3,28 @@ let teachBtn = $('.btn-teach');
 let inputTxt = $('.input-text');
 let inputTeach = $('.input-teach');
 
-//이벤트
+//datas.json 받아오기
+fetch('./datas.json')
+    .then((response) => response.text())
+    .then((result) => {
+        datas = JSON.parse(result);
+        console.log(datas);
+    });
+
+
+//클릭 이벤트
 talkBtn.on('click', talking);
 inputTxt.keydown(function(key) {
     if(key.keyCode=='13') {
         talking();
     }
 });
-teachBtn.on('click',  dataHandler);
+teachBtn.on('click',  datasHandler);
 inputTeach.keydown(function(key) {
     if(key.keyCode=='13') {
-        dataHandler();
+        datasHandler();
     }
 });
-
-//명령어
-var data = {
-    심심해: "나도 심심해",
-    안녕: "안녕하세요",
-    사라져: "...",
-    나타나: "뿅"
-}
 
 //input 리셋
 function reset() {
@@ -31,10 +32,6 @@ function reset() {
     inputTeach.val('');
 }
 
-//data에 명령어 추가하는 함수
-function newOrder(myMsgs, replyMsgs) {
-    data[myMsgs] = replyMsgs;
-}
 
 //명령어를 알아듣지 못했을 때
 function teaching(msg) {
@@ -46,12 +43,30 @@ function teaching(msg) {
     inputTeach.removeClass('none');
 }
 
+//datas에 명령어 추가
+function newOrders(myMsgs, replyMsgs) {
+    let newOrder = {
+        q: myMsgs,
+        a: replyMsgs
+    }
+
+    datas.push(newOrder); 
+}
+
+//액션 추가
+function newAct(myMsgs) {
+    let act;
+    if(myMsgs) {
+        return act;
+    }
+}
+
 //명령어 가르치기
-function dataHandler() {
+function datasHandler() {
     const myMsg = inputTxt.val();
     const replyMsg = inputTeach.val();
     
-    newOrder(myMsg, replyMsg);
+    newOrders(myMsg, replyMsg);
     
     $('.bubble > h3').text('말을 배웠어요.');
     
@@ -68,25 +83,28 @@ function dataHandler() {
 //default
 function talking() {
     let myMsg = inputTxt.val();
-    let replyMsg = data[myMsg];
+    let replyMsg = datas.filter((data) => data.q == myMsg);
 
-    if(replyMsg) {
+    if(replyMsg[0]) {
         //타이핑 애니메이션
         var typewriter = new Typewriter('.bubble > h3', {
             loop: false
         });
+        typewriter.typeString(replyMsg[0].a)
+        .pauseFor(150)
+        .start();
 
-        typewriter.typeString(replyMsg)
-            .pauseFor(150)
-            .start();
+        console.log('대답 완료');
     }
 
     if(myMsg=='사라져') {
         $('.img-gif').addClass('hidden');
     } else if(myMsg=='나타나') {
         $('.img-gif').removeClass('hidden');
+    } else if(myMsg.includes('혜미')) {
+        window.open("https://github.com/heaming", "네이버새창", "width=800, height=700, toolbar=no, menubar=no, scrollbars=no, resizable=yes" );  
     }
     
-    data[myMsg] ? inputTxt.val('') : teaching(myMsg);
+    replyMsg[0] ? inputTxt.val('') : teaching(myMsg);
 }
 
