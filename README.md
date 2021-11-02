@@ -1,6 +1,6 @@
 # 👾미니 챗봇 Mini Chat-bot
 > * 자바스크립트와 JSON의 작동 원리를 이해하기 위해 만든 챗봇
-> * 링크:
+![image](https://user-images.githubusercontent.com/85826542/139889133-b7ff0a32-dbee-4a1b-9be0-72c794ab986e.png)
 
 
 ## 1. Tech Stack  
